@@ -83,7 +83,9 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, registerPath)
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 // list public urls here
-                .antMatchers(HttpMethod.GET, "/products/**");
+                .antMatchers(HttpMethod.GET, "/products/**")
+                //.antMatchers("/**")
+        ;
         // or, whitelist all public urls directly here, one by one
     }
 }
