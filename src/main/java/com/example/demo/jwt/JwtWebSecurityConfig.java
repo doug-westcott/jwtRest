@@ -62,7 +62,7 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests().antMatchers("/user/**").hasRole("USER")
+                .and().authorizeRequests().antMatchers("/users/**", "/carts/**", "cartitems/**").hasRole("USER")
                 // or, whitelist all user urls directly here, one by one
                 .and().authorizeRequests().anyRequest().hasRole("ADMIN");
 
@@ -82,7 +82,8 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, authenticationPath)
                 .antMatchers(HttpMethod.POST, registerPath)
                 .antMatchers(HttpMethod.OPTIONS, "/**")
-                .antMatchers("/public/**");
+                // list public urls here
+                .antMatchers(HttpMethod.GET, "/products/**");
         // or, whitelist all public urls directly here, one by one
     }
 }
