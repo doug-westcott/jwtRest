@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Cart {
     private Long id;
     private String status;
-    private Long userid;
+    private String userid;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +32,11 @@ public class Cart {
 
     @Basic
     @Column(name = "USERID")
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

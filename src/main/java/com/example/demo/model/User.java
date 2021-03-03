@@ -5,28 +5,17 @@ import java.util.Objects;
 
 @Entity
 public class User {
-    private Long id;
-    private String email;
+    private String id;
     private String name;
 
     @Id
     @Column(name = "ID")
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "EMAIL")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     @Basic
@@ -44,11 +33,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(email, user.email) && Objects.equals(name, user.name);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, name);
+        return Objects.hash(id, name);
     }
 }

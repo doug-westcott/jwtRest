@@ -6,14 +6,14 @@ drop table USER if exists;
 -- ID field value will match jwtUser id (1 - 1)
 CREATE TABLE USER
 (
-    ID    BIGINT       not null primary key,
-    EMAIL VARCHAR(255) not null,
+    ID    VARCHAR(255)       not null primary key,
+--    EMAIL VARCHAR(255) not null,
     NAME  VARCHAR(255) not null
 );
 
-insert into USER (ID, EMAIL, NAME) VALUES (1, 'joe@joe.com', 'Joe');
-insert into USER (ID, EMAIL, NAME) VALUES (2, 'ann@ann.com', 'Ann');
-insert into USER (ID, EMAIL, NAME) VALUES (3, 'admin@admin.com', 'Admin');
+insert into USER (ID, NAME) VALUES ('joe@joe.com', 'Joe');
+insert into USER (ID, NAME) VALUES ('ann@ann.com', 'Ann');
+insert into USER (ID, NAME) VALUES ('admin@admin.com', 'Admin');
 
 
 CREATE TABLE PRODUCT
@@ -31,7 +31,7 @@ CREATE TABLE CART
 (
     ID     BIGINT       not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1),
     STATUS VARCHAR(255) not null,
-    USERID BIGINT not null REFERENCES USER (ID)
+    USERID VARCHAR(255) not null REFERENCES USER (ID)
 );
 
 CREATE TABLE CARTITEM
