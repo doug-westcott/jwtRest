@@ -73,21 +73,6 @@ public class JwtAuthenticationRestController {
         return createAuthenticationToken(authenticationRequest);
     }
 
-//    @RequestMapping(value = "/refresh", method = RequestMethod.GET)
-//    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
-//        String authToken = request.getHeader(tokenHeader);
-//        final String token = authToken.substring(7);
-//        String username = jwtTokenUtil.getUsernameFromToken(token);
-//        JwtUserDetails user = (JwtUserDetails) jwtTableUserDetailsService.loadUserByUsername(username);
-//
-//        if (jwtTokenUtil.canTokenBeRefreshed(token)) {
-//            String refreshedToken = jwtTokenUtil.refreshToken(token);
-//            return ResponseEntity.ok(new JwtTokenResponse(refreshedToken));
-//        } else {
-//            return ResponseEntity.badRequest().body(null);
-//        }
-//    }
-
     @ExceptionHandler({AuthenticationException.class})
     public ResponseEntity<String> handleAuthenticationException(AuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
