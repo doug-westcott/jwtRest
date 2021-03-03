@@ -62,9 +62,9 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests().antMatchers("/users/**", "/carts/**", "cartitems/**").hasRole("USER")
-                // or, whitelist all user urls directly here, one by one
-                .and().authorizeRequests().anyRequest().hasRole("ADMIN");
+                .and().authorizeRequests().anyRequest().authenticated()
+                //.antMatchers("/**")
+        ;
 
         httpSecurity
                 .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
@@ -82,11 +82,14 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, authenticationPath)
                 .antMatchers(HttpMethod.POST, registerPath)
                 .antMatchers(HttpMethod.OPTIONS, "/**")
-                // list public urls here
+                // whitelist all public urls here -- copy this line and modify:
                 .antMatchers(HttpMethod.GET, "/products/**")
-                //.antMatchers("/**")
+
+
+
+
+        //.antMatchers("/**")
         ;
-        // or, whitelist all public urls directly here, one by one
     }
 }
 

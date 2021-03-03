@@ -66,6 +66,7 @@ public class JwtAuthenticationRestController {
             jwtUser.setRole("ROLE_USER");
             jwtUserRepository.save(jwtUser);
             System.out.println("Registered: " + jwtUser);
+            System.out.println(passwordEncoder.encode(authenticationRequest.getPassword()));
         } else {
             System.out.println("User exists, attempting login instead:" + authenticationRequest.getUsername());
         }

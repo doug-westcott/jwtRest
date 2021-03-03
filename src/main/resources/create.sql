@@ -3,18 +3,18 @@ drop table CART if exists;
 drop table PRODUCT if exists;
 drop table USER if exists;
 
--- ID field value will match jwtUser id (1 - 1)
+-- ID field value will match jwtUser username 1-1
 CREATE TABLE USER
 (
-    ID    VARCHAR(255)       not null primary key,
---    EMAIL VARCHAR(255) not null,
-    NAME  VARCHAR(255) not null
+    ID    VARCHAR(255) not null primary key,
+    NAME  VARCHAR(255) not null,
+    ROLE  VARCHAR(255) not null
 );
 
-insert into USER (ID, NAME) VALUES ('joe@joe.com', 'Joe');
-insert into USER (ID, NAME) VALUES ('ann@ann.com', 'Ann');
-insert into USER (ID, NAME) VALUES ('admin@admin.com', 'Admin');
-
+insert into USER (ID, NAME, ROLE) VALUES ('joe@joe.com', 'Joe', 'Customer');
+insert into USER (ID, NAME, ROLE) VALUES ('ann@ann.com', 'Ann', 'Customer');
+insert into USER (ID, NAME, ROLE) VALUES ('fred@fred.com', 'Fred', 'Support');
+insert into USER (ID, NAME, ROLE) VALUES ('admin@admin.com', 'Admin', 'Admin');
 
 CREATE TABLE PRODUCT
 (
