@@ -8,13 +8,14 @@ CREATE TABLE USER
 (
     ID    VARCHAR(255) not null primary key,
     NAME  VARCHAR(255) not null,
-    ROLE  VARCHAR(255) not null
+    ROLE  VARCHAR(255) not null,
+    PICTURE VARCHAR(255) not null
 );
 
-insert into USER (ID, NAME, ROLE) VALUES ('joe@joe.com', 'Joe', 'Customer');
-insert into USER (ID, NAME, ROLE) VALUES ('ann@ann.com', 'Ann', 'Customer');
-insert into USER (ID, NAME, ROLE) VALUES ('fred@fred.com', 'Fred', 'Support');
-insert into USER (ID, NAME, ROLE) VALUES ('admin@admin.com', 'Admin', 'Admin');
+insert into USER (ID, NAME, ROLE, PICTURE) VALUES ('joe@joe.com', 'Joe', 'Customer', '');
+insert into USER (ID, NAME, ROLE, PICTURE) VALUES ('ann@ann.com', 'Ann', 'Customer', '');
+insert into USER (ID, NAME, ROLE, PICTURE) VALUES ('fred@fred.com', 'Fred', 'Support', '');
+insert into USER (ID, NAME, ROLE, PICTURE) VALUES ('admin@admin.com', 'Admin', 'Admin', '');
 
 CREATE TABLE PRODUCT
 (

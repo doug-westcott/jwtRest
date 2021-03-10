@@ -83,6 +83,7 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, registerPath)
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 // whitelist all public urls here -- copy this line and modify:
+                .antMatchers(HttpMethod.GET, "/images/**")
                 .antMatchers(HttpMethod.GET, "/products/**")
 
 
