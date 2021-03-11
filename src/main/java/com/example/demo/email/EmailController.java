@@ -3,9 +3,6 @@ package com.example.demo.email;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.validation.Valid;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +34,7 @@ public class EmailController {
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String createMail(Model model,
-                             @ModelAttribute("mailObject") @Valid EmailObject mailObject,
+                             @ModelAttribute("mailObject") EmailObject mailObject,
                              Errors errors) throws MessagingException {
         if (errors.hasErrors()) {
             return "errors";
