@@ -16,14 +16,14 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public void send(String to, String subject, String htmlBody) throws MessagingException {
+    public void send(String to, String subject, String text) throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
         helper.setFrom(NOREPLY_ADDRESS);
         helper.setTo(to);
         helper.setSubject(subject);
-        helper.setText(htmlBody, true);
+        helper.setText(text, true);
         emailSender.send(message);
     }
 }
