@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 @Component
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "noreply@CP3231.com";
+    private static final String NOREPLY_ADDRESS = "noreply@gmail.com";
 
     @Autowired
     private JavaMailSender emailSender;
@@ -25,5 +25,6 @@ public class EmailServiceImpl implements EmailService {
         helper.setSubject(subject);
         helper.setText(text, true);
         emailSender.send(message);
+        System.out.println("Sent");
     }
 }

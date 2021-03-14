@@ -23,9 +23,11 @@ public class EmailController {
 
     @RequestMapping(value = "/email", method = RequestMethod.POST)
     public ResponseEntity<?> createMail(@RequestBody EmailObject emailObject) throws MessagingException {
+        System.out.println("Start in controller");
 
         emailService.send(emailObject.getTo(), emailObject.getSubject(), emailObject.getText());
 
+        System.out.println("Done in controller");
         return ResponseEntity.ok("Done");
     }
 
