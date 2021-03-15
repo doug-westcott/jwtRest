@@ -1,10 +1,3 @@
-/*C2*/SET SCHEMA PUBLIC
-DELETE FROM USER WHERE ID='joe@joe.com'
-INSERT INTO USER VALUES('joe@joe.com','Joe','Customer','/images/UsersPicturejoe@joe.com.jpg')
-COMMIT
-DELETE FROM USER WHERE ID='joe@joe.com'
-INSERT INTO USER VALUES('joe@joe.com','Joe','Customer','/images/UsersPicturejoe@joe.com.jpeg')
-COMMIT
-DELETE FROM USER WHERE ID='joe@joe.com'
-INSERT INTO USER VALUES('joe@joe.com','Joe','Customer','/images/UsersPicturejoe@joe.com.jpg')
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO USER VALUES('joe22@joe.com','','Customer','/images/UsersPictureDefault.png')
 COMMIT
