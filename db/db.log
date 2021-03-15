@@ -1,3 +1,4 @@
-/*C4*/SET SCHEMA PUBLIC
-INSERT INTO USER VALUES('joe22@joe.com','','Customer','/images/UsersPictureDefault.png')
+/*C2*/SET SCHEMA PUBLIC
+DELETE FROM USER WHERE ID='doug.westcott@cna-qatar.edu.qa'
+INSERT INTO USER VALUES('doug.westcott@cna-qatar.edu.qa','','Customer','/images/UsersPicturedoug.westcott@cna-qatar.edu.qa.jpg')
 COMMIT

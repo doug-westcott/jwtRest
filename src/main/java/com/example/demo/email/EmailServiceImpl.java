@@ -1,30 +1,40 @@
 package com.example.demo.email;
 
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 
 @Component
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "noreply@gmail.com";
+    @Value("${from-email}")
+    String FROM_ADDRESS;
 
     @Autowired
-    private JavaMailSender emailSender;
+    SendGrid sendGrid;
 
-    public void send(String to, String subject, String text) throws MessagingException {
+    public void send(String to, String subject, String text) throws IOException {
 
-        MimeMessage message = emailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-        helper.setFrom(NOREPLY_ADDRESS);
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(text, true);
-        emailSender.send(message);
-        System.out.println("Sent");
+        Email from = new Email(FROM_ADDRESS);
+        Email emailTo = new Email(to);
+        Content content = new Content("text/html", text);
+        Mail mail = new Mail(from, subject, emailTo, content);
+
+        Request request = new Request();
+        request.setMethod(Method.POST);
+        request.setEndpoint("mail/send");
+        request.setBody(mail.build());
+        Response response = sendGrid.api(request);
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody());
+        System.out.println(response.getHeaders());
     }
 }

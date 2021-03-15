@@ -18,5 +18,4 @@ public class ImageServiceImpl implements ImageService {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
     }
-
 }
